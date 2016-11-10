@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	runtime.GOMAXPROCS(runtime.NumCPU())
-	wg := sync.WaitGroup{} //创建一个同步等待
-	wg.Add(10)             //同步等待10
+	runtime.GOMAXPROCS(runtime.NumCPU()) //去计算机cpu个数来聚顶一次启动线程的个数
+	wg := sync.WaitGroup{}               //创建一个同步等待
+	wg.Add(10)                           //同步等待10
 	for i := 0; i < 10; i++ {
 		go Go(&wg, i)
 	}
