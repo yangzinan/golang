@@ -23,5 +23,5 @@ func Go(wg *sync.WaitGroup, index int) {
 		a += i
 	}
 	fmt.Println(index, a)
-	wg.Done() //执行函数结束后同步等待次数减一333333222222222
+	wg.Done() //执行函数结束后同步等待次数减一33333322222222233333
 }
