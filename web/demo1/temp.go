@@ -9,7 +9,7 @@ type MyController struct {
 }
 
 func (self *MyController) Get() {
-	self.Ctx.WriteString("Hello,World! 你好，世界！")
+	self.Ctx.WriteString("Hello,Golang! 你好，Go语言！")
 }
 
 func main() {
