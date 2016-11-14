@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
-
 	"github.com/antchfx/xquery/html"
 	"golang.org/x/net/html"
 )
