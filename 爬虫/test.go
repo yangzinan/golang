@@ -13,7 +13,7 @@ func main() {
 	response, _ := http.Get("https://biz.kaslyju.net") //获取http返回头
 	body, _ := ioutil.ReadAll(response.Body)           //获取返回体
 	context := string(body)                            //返回主题转化为字符串
-
+	fmt.Println(context)
 	fmt.Println("-------------------------------------------------------")
 	root, err := html.Parse(strings.NewReader(context)) //初始化xpath文本
 	if err != nil {
