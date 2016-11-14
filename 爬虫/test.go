@@ -10,42 +10,19 @@ import (
 	"golang.org/x/net/html"
 )
 
-// /html/body/div/div/h2
-
 func main() {
-	response, _ := http.Get("https://biz.kaslyju.net")
-	body, _ := ioutil.ReadAll(response.Body)
-	/*htmlstr := `<?xml version="1.0" ?>
-	  <html>
-	  <head>
-	   <title>this is a title666666</title>
-	  </head>
-	  <body>Hello,World</body>
+	response, _ := http.Get("https://biz.kaslyju.net") //获取http返回头
+	body, _ := ioutil.ReadAll(response.Body)           //获取返回体
+	context := string(body)                            //返回主题转化为字符串
 
-
-	  </html>`*/
-	//fmt.Println(string(body))
 	fmt.Println("-------------------------------------------------------")
-	//root, err := xml.Parse(strings.NewReader(string(body)))
-	//if err != nil {
-	//	panic(err)
-	//}
-	//title := xmlquery.FindOne(root, "//html/body/div/div/h2")
-	//fmt.Println(title.InnerText())
-	//xp := goxpath.MustParse("/html/body/div/div/h2")
-	//t := xmltree.MustParseXML(bytes.NewBufferString(xml.Header + string(body)))
-	//res := goxpath.MustExec(xp, t, nil)
-	//fmt.Println(res[0])
-	root, err := html.Parse(strings.NewReader(string(body)))
+	root, err := html.Parse(strings.NewReader(context)) //初始化xpath文本
 	if err != nil {
 		panic(err)
 	}
-	//p := "//*[@id='loginForm']" + "/@id"
-	//node := htmlquery.FindOne(root, "//*[@id='loginForm']/@id")
-	node1 := htmlquery.Find(root, "//*[@id=\"loginForm\"]/@class")
-	fmt.Println(node1[0].Attr[2].Val)
-	//htmlquery.Find
-	fmt.Println(len(node1))
-	fmt.Println(htmlquery.InnerText(node1[0]))
+	node := htmlquery.Find(root, "//*[@id=\"loginForm\"]") //执行xpanth查找
+	fmt.Println(node[0].Attr[2].Val)                       //获取当前标签的第二属性（class）的值
+	fmt.Println(len(node))                                 //获取查找到的个数
+	fmt.Println(htmlquery.InnerText(node[0]))              //获取标签的文本（当前没有向下获取最近的一个）
 
 }
