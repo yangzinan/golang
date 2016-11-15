@@ -14,7 +14,7 @@ func main() {
 	response, _ := http.Get("https://biz.kaslyju.net") //获取http返回
 	body, _ := ioutil.ReadAll(response.Body)           //获取返回体
 	context := string(body)                            //返回主题转化为字符串
-	cookie := http.Cookie{Name: "testcookiename", Value: "testcookievalue", Path: "/", MaxAge: 86400}
+	cookie := http.Cookie{Name: "testcookiename", Value: "testcookievalue", Path: "/"}
 	cookies := response.Cookies()
 	cookies = append(cookies, &cookie)
 	fmt.Println(cookies)
