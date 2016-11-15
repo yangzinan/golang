@@ -10,7 +10,7 @@ func main() {
 	GetCodeImage()
 }
 
-func GetCodeImage() {
+func GetCodeImage() []*http.Cookie {
 	url := "https://biz.kaslyju.net/kasly-web/kaptchaImage"
 	response, err := http.Get(url)
 	image := response.Body
@@ -23,4 +23,5 @@ func GetCodeImage() {
 		panic(r)
 	}
 	io.Copy(file, image)
+	return response.Cookies()
 }
