@@ -21,8 +21,8 @@ const (
 func main() {
 	cookies := GetCodeImage()
 	var kcode string
-	fmt.Println("请输入验证码：")
-	fmt.Scanln(&kcode)
+	fmt.Printf("请输入验证码：")
+	fmt.Scan(&kcode)
 	Login(cookies, "wangdongyu", "Jly120612.", kcode)
 
 }
