@@ -23,7 +23,7 @@ func main() {
 	var kcode string
 	fmt.Printf("请输入验证码：")
 	fmt.Scan(&kcode)
-	Login(cookies, "wangdongyu", "Jly120612.", kcode)
+	Login(cookies, "wangdongyu", "********", kcode)
 
 }
 
